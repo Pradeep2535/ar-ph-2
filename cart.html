@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Cart</title>
+    <link rel="stylesheet" href="cart.css">
+    <style>
+        /* Add some basic styles for the loader */
+        .loader {
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #ff8a65; /* Orange */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            display: none; /* Initially hidden */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .overlay {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='header-container'>
+        <!--Icon-->
+        <a href='new1.html'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#ff8a65" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+          </svg>
+        </a>
+        <!--Text'Cart'-->
+        <h1>Cart</h1>
+    </div>
+    <div>
+        <!--Cart Items-->
+        <div id="food-item"></div>
+
+        <!--Promo Code-->
+        <div class="promo-code">
+            <input type="text" placeholder="  Promo Code">
+            <button class="apply-button">Apply</button>
+        </div>
+        <!--Total-->
+        <div class='item-summary'>
+            <div class='summary-info'>
+                <p>Subtotal</p>
+                <p>Rs. 200.00</p>
+            </div>
+            <hr class='underline'>
+            <div class='summary-info'>
+                <p>Tax and fees</p>
+                <p>Rs. 17.00</p>
+            </div>
+            <hr class='underline'>
+            <div class='summary-info'>
+                <p>Total<span> (2 items)</span></p>
+                <p id="total"></p>
+            </div>
+            <hr class='underline'>
+        </div>
+    </div>
+    <div>
+        <!--Submit-->
+        <div>
+
+            <!-- <a href='payment.html'> -->
+                <div id="checkout-button">Checkout</div>
+            </a>
+        </div>
+        
+
+        <div class="overlay" id="loaderOverlay">
+            <div class="loader" id="loader"></div>
+        </div>
+        
+
+
+        <script src="cart.js"></script>
+        <script>
+            let customerName = 'Pradeep';
+            let customerMobileNumber = 8838909289;
+            let totalAmount = 217;
+            
+            let currentDate = new Date();
+
+        // Get the individual components of the date and time
+            let year = currentDate.getFullYear();
+            let month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            let day = String(currentDate.getDate()).padStart(2, '0');
+            let hours = String(currentDate.getHours()).padStart(2, '0');
+            let minutes = String(currentDate.getMinutes()).padStart(2, '0');
+            let seconds = String(currentDate.getSeconds()).padStart(2, '0');
+
+            
+
+            let linkId = `${customerMobileNumber}${year}-${month}-${day}-${hours}-${minutes}-${seconds}`;
+            
+            
+            document.getElementById("total").innerText = `Rs. ${totalAmount}`
+
+            
+
+
+            function redirectToPaymentLink() {
+                console.log(linkId);
+                document.getElementById('loaderOverlay').style.display = 'block';
+                document.getElementById('loader').style.display = 'block';
+                const url = `https://ap8pp3x3dg.execute-api.ap-south-1.amazonaws.com/test/hi?link_id=${linkId}&total=${totalAmount}&name=${customerName}&phoneNumber=${customerMobileNumber}`;
+        
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.status_code === 200 && data.payment_link) {
+                            console.log('Redirecting to:', data.payment_link);
+                            // Redirect to the payment link
+                            window.location.href = data.payment_link;
+                        } else {
+                            console.error('Unexpected response data:', data);
+                            hideLoader(); 
+                        }
+                    })
+                    .catch(error => {
+                         console.error('Request failed:', error);
+                         hideLoader();
+                        });
+            }
+
+
+            function hideLoader() {
+            // Hide the loader and overlay
+            document.getElementById('loaderOverlay').style.display = 'none';
+            document.getElementById('loader').style.display = 'none';
+            }
+        
+            // Attach event listener to the button
+            document.getElementById('checkout-button').onclick = redirectToPaymentLink;
+        </script>
+</body>
+</html>

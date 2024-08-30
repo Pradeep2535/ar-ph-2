@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Status</title>
+</head>
+<body>
+<p>hi</p>
+<div id="message"></div>
+
+<script>
+    // Function to get query parameters
+    function getQueryParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Check the status query parameter
+    const status = getQueryParameter('status');
+    const messageElement = document.getElementById('message');
+
+    if (status === 'success') {
+        messageElement.textContent = 'Payment successful! Redirecting to the home page...';
+        setTimeout(() => {
+            window.location.href = 'http://127.0.0.1:5500/home.html';
+        }, 3000);  // Redirect after 3 seconds
+    } else if (status === 'failure') {
+        messageElement.textContent = 'Payment failed. Redirecting to the cart page...';
+        setTimeout(() => {
+            window.location.href = 'http://127.0.0.1:5500/cart.html';
+        }, 3000);  // Redirect after 3 seconds
+    } else {
+        messageElement.textContent = 'Unknown transaction status.';
+    }
+</script>
