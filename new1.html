@@ -626,10 +626,10 @@
                             </svg>
                         </a>
                         <div class="submenu">
-                            <div class="submenu-item">
-                                <a href="#" class="submenu-link"> Arrow Chicken </a>
+                            <div class="submenu-item" onclick="handleClick('button1', 'Chapati.glb')">
+                                <a href="#" class="submenu-link" id="arrowChickenLink">Arrow Chicken</a>
                             </div>
-                            <div class="submenu-item">
+                            <div class="submenu-item" onclick="handleClick('button2', 'Ramen bowl.glb')">
                                 <a href="#" class="submenu-link"> Dragon Chicken </a>
                             </div>
                         </div>
@@ -657,10 +657,10 @@
                         </svg>
                         </a>
                         <div class="submenu">
-                            <div class="submenu-item">
+                            <div class="submenu-item" onclick="handleClick('button3', 'Chapati.glb')">
                                 <a href="#" class="submenu-link"> Panner Tikka </a>
                             </div>
-                            <div class="submenu-item">
+                            <div class="submenu-item" onclick="handleClick('button4', 'Frankie.glb')">
                                 <a href="#" class="submenu-link"> Chicken Tikka </a>
                             </div>
                         </div>
@@ -688,10 +688,10 @@
                         </svg>
                         </a>
                         <div class="submenu">
-                            <div class="submenu-item">
+                            <div class="submenu-item" onclick="handleClick('button5', 'Noodles.glb')">
                                 <a href="#" class="submenu-link"> Chicken 65 </a>
                             </div>
-                            <div class="submenu-item">
+                            <div class="submenu-item" onclick="handleClick('button6', 'Fish.glb')">
                                 <a href="#" class="submenu-link"> Malabar Chicken </a>
                             </div>
                         </div>
@@ -719,10 +719,10 @@
                         </svg>
                         </a>
                         <div class="submenu">
-                            <div class="submenu-item">
+                            <div class="submenu-item" onclick="handleClick('button7', 'model7.glb')">
                                 <a href="#" class="submenu-link"> Mixed Non-Veg PLatter </a>
                             </div>
-                            <div class="submenu-item">
+                            <div class="submenu-item" onclick="handleClick('button8', 'model8.glb')">
                                 <a href="#" class="submenu-link"> Veg PLatter </a>
                             </div>
                         </div>
@@ -750,10 +750,10 @@
                         </svg>
                         </a>
                         <div class="submenu">
-                            <div class="submenu-item">
+                            <div class="submenu-item" onclick="handleClick('button9', 'Noodles.glb')">
                                 <a href="#" class="submenu-link"> Chicken Biriyani </a>
                             </div>
-                            <div class="submenu-item">
+                            <div class="submenu-item" onclick="handleClick('button10', 'model15.glb')">
                                 <a href="#" class="submenu-link"> Mutton Biriyani </a>
                             </div>
                         </div>
@@ -942,9 +942,19 @@
                 console.error('An error occurred while loading the model:', error);
             });
         }
-    
+        function toggleButton(buttonId) {
+    var button = document.getElementById(buttonId);
+    if (button.classList.contains('active')) {
+        button.classList.remove('active');
+        button.innerHTML = ''; // Update button text if needed
+    } else {
+        button.classList.add('active');
+        button.innerHTML = ''; // Update button text if needed
+    }
+}
         let presentLocation = '';
         function handleClick(buttonId, model) {
+            toggleButton(buttonId);
             presentLocation = String(buttonId);
             foodName(model);
     
