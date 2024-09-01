@@ -1,6 +1,6 @@
 let customerName = 'Pradeep';
             let customerMobileNumber = 8838909289;
-            let total = 0;
+            let total = 1;
             
             
             let currentDate = new Date();
