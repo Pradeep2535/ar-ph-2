@@ -915,44 +915,91 @@
             });
         });
 
+        // let cartCount = 0;
+        // document.getElementById("cartCountCircle").textContent = cartCount;
+
+        // let neededFoods = [];
+        // function addThisFood(str) {
+        //     neededFoods.push(Number(str[6])-1);
+        //     localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
+        //     console.log(neededFoods);
+        // }
+
+        // function addCart() {
+        //     if(presentLocation === '')
+        //     {
+        //         alert("Please Select Which Food You Want.");
+        //     }
+        //     else
+        //     {
+        //         addThisFood(presentLocation);
+        //         if (cartCount <= 10)
+        //         {
+        //         cartCount += 1;
+        //         document.getElementById("cartCountCircle").textContent = cartCount;
+        //         }   
+        //     }
+        // }
+
+        // function removeThisFood(){
+        //     neededFoods.pop();
+        //     console.log(neededFoods);
+        // }
+
+        // function removeCart() {
+        //     removeThisFood(presentLocation);
+        //     if (cartCount >= 1) {
+        //         cartCount -= 1
+        //         document.getElementById("cartCountCircle").textContent = cartCount;
+        //     }
+        // }
+
         let cartCount = 0;
+let neededFoods = JSON.parse(localStorage.getItem('neededFoods')) || [];
+
+// Update the cart count based on the number of items in neededFoods
+document.addEventListener("DOMContentLoaded", function() {
+    cartCount = neededFoods.length;
+    document.getElementById("cartCountCircle").textContent = cartCount;
+});
+
+function addCart() {
+    if (presentLocation === '') {
+        alert("Please Select Which Food You Want.");
+    } else {
+        addThisFood(presentLocation);
+        if (cartCount < 10) {
+            cartCount += 1;
+            document.getElementById("cartCountCircle").textContent = cartCount;
+        }
+    }
+}
+
+function addThisFood(str) {
+    let index = Number(str[6]) - 1;
+    if (!neededFoods.includes(index)) {
+        neededFoods.push(index);
+        localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
+        console.log(neededFoods);
+    }
+}
+
+function removeThisFood() {
+    if (neededFoods.length > 0) {
+        neededFoods.pop();
+        localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
+        console.log(neededFoods);
+    }
+}
+
+function removeCart() {
+    if (cartCount > 0) {
+        removeThisFood();
+        cartCount -= 1;
         document.getElementById("cartCountCircle").textContent = cartCount;
+    }
+}
 
-        let neededFoods = [];
-        function addThisFood(str) {
-            neededFoods.push(Number(str[6])-1);
-            localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
-            console.log(neededFoods);
-        }
-
-        function addCart() {
-            if(presentLocation === '')
-            {
-                alert("Please Select Which Food You Want.");
-            }
-            else
-            {
-                addThisFood(presentLocation);
-                if (cartCount <= 10)
-                {
-                cartCount += 1;
-                document.getElementById("cartCountCircle").textContent = cartCount;
-                }   
-            }
-        }
-
-        function removeThisFood(){
-            neededFoods.pop();
-            console.log(neededFoods);
-        }
-
-        function removeCart() {
-            removeThisFood(presentLocation);
-            if (cartCount >= 1) {
-                cartCount -= 1
-                document.getElementById("cartCountCircle").textContent = cartCount;
-            }
-        }
 
 
         function foodName(foodName) {
