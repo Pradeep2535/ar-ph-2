@@ -946,9 +946,11 @@
     var button = document.getElementById(buttonId);
     if (button.classList.contains('active')) {
         button.classList.remove('active');
+        document.getElementById('smallPage2').style.display = 'none';
         button.innerHTML = ''; // Update button text if needed
     } else {
         button.classList.add('active');
+        document.getElementById('smallPage2').style.display = 'none';
         button.innerHTML = ''; // Update button text if needed
     }
 }
