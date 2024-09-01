@@ -478,7 +478,7 @@
 </head>
 
 <body>
-    <video autoplay muted playsinline id="video"></video>
+<!--     <video autoplay muted playsinline id="video"></video> -->
     <div id="top-title" style="display: none;">
         <p id="food-name"></p>
     </div>
@@ -758,27 +758,27 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script>
 
-        document.addEventListener('DOMContentLoaded', (event) => {
-      const video = document.getElementById('video');
+    //     document.addEventListener('DOMContentLoaded', (event) => {
+    //   const video = document.getElementById('video');
 
-      // Check if the browser supports media devices
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode:  "environment"  // Use 'environment' for back camera
-          }
-        })
-        .then(function(stream) {
-          video.srcObject = stream;
-          video.play();
-        })
-        .catch(function(err) {
-          console.log("Error accessing the camera: " + err);
-        });
-      } else {
-        console.log("Media devices not supported");
-      }
-    });
+    //   // Check if the browser supports media devices
+    //   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    //     navigator.mediaDevices.getUserMedia({
+    //       video: {
+    //         facingMode:  "environment"  // Use 'environment' for back camera
+    //       }
+    //     })
+    //     .then(function(stream) {
+    //       video.srcObject = stream;
+    //       video.play();
+    //     })
+    //     .catch(function(err) {
+    //       console.log("Error accessing the camera: " + err);
+    //     });
+    //   } else {
+    //     console.log("Media devices not supported");
+    //   }
+    // });
 
         let scene, camera, renderer, model, controls;
 
@@ -796,7 +796,7 @@
             document.getElementById('model-container').appendChild(renderer.domElement);
 
             // Camera feed background
-            const video = document.querySelector('video');
+            // const video = document.querySelector('video');
 
             navigator.mediaDevices.getUserMedia({
                 video: true
