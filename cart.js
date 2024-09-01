@@ -1,6 +1,7 @@
 let customerName = 'Pradeep';
             let customerMobileNumber = 8838909289;
-            let totalAmount = 0;
+            let total = 0;
+            
             
             let currentDate = new Date();
 
@@ -28,7 +29,7 @@ let customerName = 'Pradeep';
                 console.log(linkId);
                 document.getElementById('loaderOverlay').style.display = 'block';
                 document.getElementById('loader').style.display = 'block';
-                const url = `https://ap8pp3x3dg.execute-api.ap-south-1.amazonaws.com/test/hi?link_id=${linkId}&total=${totalAmount}&name=${customerName}&phoneNumber=${customerMobileNumber}`;
+                const url = `https://ap8pp3x3dg.execute-api.ap-south-1.amazonaws.com/test/hi?link_id=${linkId}&total=${total}&name=${customerName}&phoneNumber=${customerMobileNumber}`;
         
                 fetch(url)
                     .then(response => {
@@ -311,7 +312,7 @@ function updateTotals() {
   });
 
   const tax = subtotal * 0.02;
-  const total = subtotal + tax;
+  total = subtotal + tax;
 
   document.getElementById("subtotal").innerText = `Rs. ${subtotal.toFixed(2)}`;
   document.getElementById("tax_val").innerText = `Rs. ${tax.toFixed(2)}`;
