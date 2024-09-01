@@ -474,6 +474,111 @@
             border-radius: 20px;
             height: 30px;
         }
+        
+        .menu-container {
+            margin: 0;
+            /* Remove extra margin */
+            padding: 0;
+            /* Remove extra padding */
+            width: 100%;
+            /* Make the container full width */
+        }
+        
+        .menu {
+            width: 100%;
+            /* Make the menu full width */
+        }
+        
+        .item {
+            width: 100%;
+            /* Ensure each item spans the full width */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .link {
+            display: flex;
+            justify-content: space-between;
+            /* Align the text and icon */
+            align-items: center;
+            padding: 10px 15px;
+            /* Add padding for better clickability */
+            background-color: #e9cbb1;
+            /* Light background color */
+            border: 1px solid #ddd;
+            width: 100%;
+            /* Full width */
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            color: black;
+        }
+        
+        .link:hover {
+            background-color: #eea73e;
+            /* Change background color on hover */
+        }
+        
+        .submenu {
+            display: none;
+            /* Hide submenu by default */
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .submenu-item {
+            padding: 10px 15px;
+        }
+        
+        .submenu-link {
+            text-decoration: none;
+            color: #007bff;
+        }
+        
+        .submenu-link:hover {
+            text-decoration: underline;
+        }
+        
+        .loader {
+            border: 8px solid #f3f3f3;
+            /* Light grey */
+            border-top: 8px solid #ff8a65;
+            /* Orange */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            display: none;
+            /* Initially hidden */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .overlay {
+            display: none;
+            /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
     </style>
 </head>
 
@@ -528,15 +633,15 @@
                         <a href="#" class="link">
                             <span> Starters </span>
                             <svg viewBox="0 0 360 360" xml:space="preserve">
-                            <g id="SVGRepo_iconCarrier">
-                                <path
-                                    id="XMLID_225_"
-                                    d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 
-                                    c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 
-                                    s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"
-                                ></path>
-                            </g>
-                        </svg>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        id="XMLID_225_"
+                                        d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 
+                                        c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 
+                                        s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"
+                                    ></path>
+                                </g>
+                            </svg>
                         </a>
                         <div class="submenu">
                             <div class="submenu-item">
@@ -551,10 +656,8 @@
             </div>
 
             <br>
-            <br>
-            <br>
-            <br>
-            
+
+
             <div class="menu-container">
                 <div class="menu">
                     <div class="item">
@@ -584,10 +687,7 @@
             </div>
 
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
+
 
             <div class="menu-container">
                 <div class="menu">
@@ -618,10 +718,7 @@
             </div>
 
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
+
 
             <div class="menu-container">
                 <div class="menu">
@@ -652,10 +749,7 @@
             </div>
 
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
+
 
             <div class="menu-container">
                 <div class="menu">
@@ -736,9 +830,9 @@
             <div id="cart-count">
                 <p id="cartCountCircle"></p>
             </div>
-            <a href='cart.html'><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-cart4" viewBox="0 0 16 16" id="add">
+            <div id="cartIcon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-cart4" viewBox="0 0 16 16" id="add">
                 <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
-              </svg></a>
+              </svg></div>
         </div>
         <a onclick="addCart()">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle minus" viewBox="0 0 16 16">
@@ -747,38 +841,64 @@
               </svg>
         </a>
     </div>
+    <!-- SVG icons here -->
+
+
 
     </div>
+    <div class="overlay" id="loaderOverlay">
+        <div class="loader" id="loader"></div>
+    </div>
 
-    <!-- SVG icons here -->
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script>
+        document.querySelectorAll('.link').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default anchor click behavior
+                const submenu = this.nextElementSibling;
+                const isSubmenuVisible = submenu.style.display === 'block';
+
+                // Hide all submenus and reset all margins
+                document.querySelectorAll('.submenu').forEach(sub => {
+                    sub.style.display = 'none';
+                });
+                document.querySelectorAll('.item').forEach(item => {
+                    item.style.marginBottom = '0';
+                });
+
+                // Toggle the clicked submenu
+                if (!isSubmenuVisible) {
+                    submenu.style.display = 'block';
+                    this.parentElement.style.marginBottom = `${submenu.scrollHeight}px`; // Adjust the margin bottom of the parent to the height of the submenu
+                }
+            });
+        });
 
         document.addEventListener('DOMContentLoaded', (event) => {
-      const video = document.getElementById('video');
+            const video = document.getElementById('video');
 
-      // Check if the browser supports media devices
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode:  "environment"  // Use 'environment' for back camera
-          }
-        })
-        .then(function(stream) {
-          video.srcObject = stream;
-          video.play();
-        })
-        .catch(function(err) {
-          console.log("Error accessing the camera: " + err);
+            // Check if the browser supports media devices
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({
+                        video: {
+                            facingMode: "environment" // Use 'environment' for back camera
+                        }
+                    })
+                    .then(function(stream) {
+                        video.srcObject = stream;
+                        video.play();
+                    })
+                    .catch(function(err) {
+                        console.log("Error accessing the camera: " + err);
+                    });
+            } else {
+                console.log("Media devices not supported");
+            }
         });
-      } else {
-        console.log("Media devices not supported");
-      }
-    });
 
         let scene, camera, renderer, model, controls;
 
@@ -824,15 +944,9 @@
         }
 
         function loadModel(modelPath) {
-
-
             if (model) {
                 scene.remove(model);
             }
-
-            // var dracoLoader = new DRACOLoader();
-            // // Set the path to the DRACO decoder  
-            // dracoLoader.setDecoderPath('briyani.glb');
 
             const loader = new THREE.GLTFLoader();
 
@@ -847,37 +961,22 @@
             });
         }
 
-
-
-        // const gltfLoader = new THREE.GLTFLoader();
-        // gltfLoader.setDRACOLoader(dracoLoader);
-
-        // Now load your model  
-        // gltfLoader.load('path/to/your/model.gltf', function(gltf) {
-        //     scene.add(gltf.scene);
-        // }, undefined, function(error) {
-        //     console.error(error);
-        // });
-
         let presentLocation = '';
+
         function handleClick(buttonId, model) {
-            // Remove outline class from all buttons
             presentLocation = String(buttonId);
             foodName(model);
-            // Add outline class to the clicked button
+
             var buttons = document.querySelectorAll('.button');
             buttons.forEach(function(btn) {
                 btn.style.outline = 'none';
             });
 
-            // Add inline style to the clicked button
             var button = document.getElementById(buttonId);
             button.style.outline = '3px solid orange';
 
-            // Load the model
             loadModel(model);
         }
-
 
         function render() {
             requestAnimationFrame(render);
@@ -900,14 +999,12 @@
             let toggleButton2 = document.getElementById('toggleButton2');
             let smallPage2 = document.getElementById('smallPage2');
 
-            // Toggle smallPage1 visibility and hide smallPage2 and imageBtn
             toggleButton1.addEventListener('click', function() {
                 smallPage1.style.display = (smallPage1.style.display === 'block') ? 'none' : 'block';
                 smallPage2.style.display = 'none';
                 imageBtn.style.display = 'none';
             });
 
-            // Toggle smallPage2 visibility and hide smallPage1 and imageBtn
             toggleButton2.addEventListener('click', function() {
                 smallPage2.style.display = (smallPage2.style.display === 'block') ? 'none' : 'block';
                 smallPage1.style.display = 'none';
@@ -916,44 +1013,46 @@
         });
 
         let cartCount = 0;
-        document.getElementById("cartCountCircle").textContent = cartCount;
+        let neededFoods = JSON.parse(localStorage.getItem('neededFoods')) || [];
 
-        let neededFoods = [];
-        function addThisFood(str) {
-            neededFoods.push(Number(str[6])-1);
-            localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
-            console.log(neededFoods);
-        }
+        document.addEventListener("DOMContentLoaded", function() {
+            cartCount = neededFoods.length;
+            document.getElementById("cartCountCircle").textContent = cartCount;
+        });
 
         function addCart() {
-            if(presentLocation === '')
-            {
-                alert("Please Select Which Food You Want.");
-            }
-            else
-            {
-                addThisFood(presentLocation);
-                if (cartCount <= 10)
-                {
+            addThisFood(presentLocation);
+            if (cartCount < 10) {
                 cartCount += 1;
                 document.getElementById("cartCountCircle").textContent = cartCount;
-                }   
             }
         }
 
-        function removeThisFood(){
-            neededFoods.pop();
-            console.log(neededFoods);
+
+        function addThisFood(str) {
+            let index = Number(str[6]) - 1;
+            if (!neededFoods.includes(index)) {
+                neededFoods.push(index);
+                localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
+                console.log(neededFoods);
+            }
+        }
+
+        function removeThisFood() {
+            if (neededFoods.length > 0) {
+                neededFoods.pop();
+                localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
+                console.log(neededFoods);
+            }
         }
 
         function removeCart() {
-            removeThisFood(presentLocation);
-            if (cartCount >= 1) {
-                cartCount -= 1
+            if (cartCount > 0) {
+                removeThisFood();
+                cartCount -= 1;
                 document.getElementById("cartCountCircle").textContent = cartCount;
             }
         }
-
 
         function foodName(foodName) {
             document.getElementById("top-title").style.display = "block";
@@ -965,9 +1064,25 @@
             document.getElementById("food-name").style.color = "#000";
         }
 
-        // Local Storage
         localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
+
+        document.getElementById("cartIcon").addEventListener("click", function() {
+            const loader = document.getElementById("loader");
+            const overlay = document.getElementById("loaderOverlay")
+
+            // Show the loader
+            loader.style.display = "block";
+            overlay.style.display = "block";
+
+            // Hide the loader after 1 second and redirect to cart.html
+            setTimeout(function() {
+                loader.style.display = "none";
+                overlay.style.display = "none";
+                window.location.href = "cart.html";
+            }, 1000);
+        });
     </script>
+
 </body>
 
 </html>
