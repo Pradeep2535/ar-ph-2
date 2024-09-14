@@ -919,10 +919,21 @@
         document.getElementById("cartCountCircle").textContent = cartCount;
 
         let neededFoods = [];
+        let neededFoodsCount = [];
         function addThisFood(str) {
-            neededFoods.push(Number(str[6])-1);
+            let foodIndex = Number(str[6]) - 1; 
+            if (neededFoods.includes(foodIndex)) 
+            {
+                let arrayIndex = neededFoods.indexOf(foodIndex);
+                neededFoodsCount[arrayIndex] += 1;
+            } 
+            else 
+            {
+                neededFoods.push(foodIndex);
+                neededFoodsCount.push(1);
+            }
             localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
-            console.log(neededFoods);
+            localStorage.setItem('needFoodsCount', JSON.stringify(neededFoodsCount));
         }
 
         function addCart() {
@@ -967,6 +978,7 @@
 
         // Local Storage
         localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
+        localStorage.setItem('needFoodsCount', JSON.stringify(neededFoodsCount));
     </script>
 </body>
 

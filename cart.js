@@ -114,9 +114,13 @@ const foodItems = [
   },
 ];
 
-let neededFoods = [];
 document.addEventListener("DOMContentLoaded", function () {
   let neededFoods = JSON.parse(localStorage.getItem("neededFoods"));
+  let neededFoodsCount = JSON.parse(localStorage.getItem("needFoodsCount"));
+  neededFoodsCount.forEach((el, index) => {
+    foodItems[index].count = el;
+  });
+  console.log(foodItems);
   if (neededFoods) {
     renderFoodItems(neededFoods, foodItems);
   } else {
@@ -124,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function renderFoodItems(neededFoods, foodItems) {
+function renderFoodItems(neededFoods, foodItems, neededFoodsCount) {
   const container = document.getElementById("food-item");
   if (container) {
     container.innerHTML = "";
