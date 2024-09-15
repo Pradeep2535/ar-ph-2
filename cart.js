@@ -2,125 +2,127 @@ const foodItems = [
   {
     name: "Chapati",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.2QoIkJxfhNslsJrY8k2TfAHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
   {
     name: "Ramen bowl",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.x-1Rn2BPDZ8QNjTmUbx3QAHaHa?pid=ImgDet&w=200&h=200&c=7&dpr=1.3",
   },
   {
     name: "Chapati",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.2QoIkJxfhNslsJrY8k2TfAHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
   {
     name: "Frankie",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.x-1Rn2BPDZ8QNjTmUbx3QAHaHa?pid=ImgDet&w=200&h=200&c=7&dpr=1.3",
   },
   {
     name: "Noodles",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://www.thespruceeats.com/thmb/b5TG9lMFOtAmFkqWoOzMaRvL2Fk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-southern-fried-chicken-3056867-hero-01-58b66ff9e2f14b86bfdd50c7088cfe45.jpg",
   },
   {
     name: "Fish",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.8-hIBxuk2aR5lmY7CHN38wHaE7?w=275&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
   {
     name: "model7",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.ruNe8SGMprPczHMTKOjV-QHaE5?w=296&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
   {
     name: "model8",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.tTYO2xFwhnWqthCpnPT97gHaEK?w=313&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
   {
     name: "Noodles",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.te9gPiD8UiUZ0XQ1qcAjEAHaEL?w=283&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
   {
     name: "model10",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.ga0ROyhrbeISa3RuFVB34gHaEK?w=285&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
   {
     name: "model11",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.occg_F34lY-U35Ywbgs-uQHaE7?w=283&h=188&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
   {
     name: "model12",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.JqR-Z7cf_ZsW9okAotb8_wHaE8?w=298&h=199&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
   {
     name: "model13",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://www.archanaskitchen.com/images/archanaskitchen/1-Author/admin/How_To_Make_Homemade_Idiyappam_Recipe__Rice_Sevai_Recipe_1600.jpg",
   },
   {
     name: "model14",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://th.bing.com/th/id/OIP.ugOanrbz8U_Inxwinpv4pQHaE8?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
   {
     name: "model15",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "",
   },
   {
     name: "model16",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://www.archanaskitchen.com/images/archanaskitchen/1-Author/Farrukh_Aziz_Ansari/Bedmi_Poori.jpg",
   },
   {
     name: "model17",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://i0.wp.com/www.relishthebite.com/wp-content/uploads/2015/05/Kothuparotta8.jpg",
   },
   {
     name: "model18",
     price: 100.0,
-    count: 1,
+    count: 0,
     web: "https://s3.scoopwhoop.com/dan/29/2.jpg",
   },
   {
     name: "model19",
     price: 100.0,
-    count: 1,
+    count: 0,
   },
 ];
 
 document.addEventListener("DOMContentLoaded", function () {
   let neededFoods = JSON.parse(localStorage.getItem("neededFoods"));
   let neededFoodsCount = JSON.parse(localStorage.getItem("needFoodsCount"));
+  console.log(neededFoods);
+  console.log(neededFoodsCount);
   neededFoodsCount.forEach((el, index) => {
-    foodItems[index].count = el;
+    let countChange = neededFoods[index];
+    foodItems[countChange].count = el;
   });
-  console.log(foodItems);
   if (neededFoods) {
     renderFoodItems(neededFoods, foodItems);
   } else {
@@ -129,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function renderFoodItems(neededFoods, foodItems, neededFoodsCount) {
+  console.log(foodItems);
   const container = document.getElementById("food-item");
   if (container) {
     container.innerHTML = "";
@@ -163,16 +166,16 @@ function renderFoodItems(neededFoods, foodItems, neededFoodsCount) {
 }
 
 function increment(index) {
-  foodItems[neededFoods[index]].count++;
-  document.getElementById(`counter-${index}`).innerText =
-    foodItems[neededFoods[index]].count;
+  foodItems[index].count++;
+  document.getElementById(`counter-${index}`).textContent =
+    foodItems[index].count;
 }
 
 function decrement(index) {
-  if (foodItems[neededFoods[index]].count > 0) {
-    foodItems[neededFoods[index]].count--;
-    document.getElementById(`counter-${index}`).innerText =
-      foodItems[neededFoods[index]].count;
+  if (foodItems[index].count > 0) {
+    foodItems[index].count--;
+    document.getElementById(`counter-${index}`).textContent =
+      foodItems[index].count;
   }
 }
 

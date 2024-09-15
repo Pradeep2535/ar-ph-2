@@ -921,7 +921,16 @@
         let neededFoods = [];
         let neededFoodsCount = [];
         function addThisFood(str) {
-            let foodIndex = Number(str[6]) - 1; 
+            let foodIndex
+            if(str.length > 7)
+            {
+                foodIndex = Number(str.slice(6)) - 1;
+            }
+            else
+            {
+                foodIndex = Number(str[6]) - 1;
+            }
+            console.log(foodIndex);
             if (neededFoods.includes(foodIndex)) 
             {
                 let arrayIndex = neededFoods.indexOf(foodIndex);
@@ -932,6 +941,8 @@
                 neededFoods.push(foodIndex);
                 neededFoodsCount.push(1);
             }
+            console.log(neededFoods);
+            console.log(neededFoodsCount);
             localStorage.setItem('neededFoods', JSON.stringify(neededFoods));
             localStorage.setItem('needFoodsCount', JSON.stringify(neededFoodsCount));
         }
