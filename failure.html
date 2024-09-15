@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed</title>
+    <link rel="stylesheet" href="failure.css">
+</head>
+<body>
+    <div class="container">
+        <div class="status-icon failed">
+            <!-- Failure Icon (X Mark) -->
+            ✕
+        </div>
+        <h1>Order Failed</h1>
+        <p>Unfortunately, your Order could not be processed.</p>
+        <button id="retryPayment">Try Again</button>
+    </div>
+    <div class="overlay" id="loaderOverlay">
+        <div class="loader" id="loader"></div>
+    </div>
+    <div id="spinner" class="spinner" style="display: none;"></div>
+    <script>
+        const apiURL = 'https://s12j4nb21k.execute-api.ap-south-1.amazonaws.com/message/telFunc?token=7274047456:AAFlt1ylqNDj2Nbq-ddOaw9rnz-N-DF4RoE&chat_id=-4542112220&message=hello';
+const fetchBtn = document.getElementById('retryPayment');
+const retryBtn = document.getElementById('retryBtn');
+const spinner = document.getElementById('loaderOverlay');
+const spinner2=document.getElementById('spinner');
+
+fetchBtn.addEventListener('click', () => {
+    fetchAPI(); 
+});
+
+async function fetchAPI() {
+    spinner.style.display = 'block';
+    spinner2.style.display = 'block';
+    const response = await fetch(apiURL).catch(() => {
+        spinner.style.display = 'none';
+        spinner2.style.display = 'none';
+        showFailureDialog();
+        return null;  
+    });
+
+    spinner.style.display = 'none';
+    spinner2.style.display = 'none';
+
+    if (response && response.status === 200) {
+        spinner.style.display = 'block';
+        spinner2.style.display = 'block';
+        setTimeout(function(){
+            window.location.href = 'success.html';
+        }, 1000); 
+    } else if (response) {
+
+        window.location.href = 'failure.html';
+        showFailureDialog();
+    }
+}
+    </script>
+</body>
+</html>
